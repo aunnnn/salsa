@@ -11,8 +11,8 @@ import UIKit
 extension UIView {
   /// The name that will be given to groups representing this view.
   /// Override to provide custom names for your views in Sketch
-  @objc open var sketchName: String { return "View" }
-
+  @objc open var sketchName: String { return "\(type(of: self))" }
+  
   /// Creates a `Group` that mirrors the layout of the view
   @objc public func makeSketchGroup() -> Group {
     return makeSketchGroup(name: sketchName)
