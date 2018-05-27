@@ -24,13 +24,13 @@ public class Bitmap: Layer {
    - parameter frame:         Frame of the Bitmap inside its parent container
    - parameter tintColor:     Overrides the `Color` of the images, works the same way as setting `tintColor` on `UIImageView` on iOS
    */
-  init(fileName: String, frame: CGRect, tintColor: Color? = nil) {
+  init(fileName: String, frame: CGRect, tintColor: Color? = nil, imageName: String = "Image") {
     self.fileName = fileName
     if fileName.contains(".") {
       assertionFailure("file names should not include the file type")
     }
     self.tintColor = tintColor
-    super.init(name: "Image", frame: frame)
+    super.init(name: imageName, frame: frame)
   }
 
   public required init?(json: [String : Any]) {

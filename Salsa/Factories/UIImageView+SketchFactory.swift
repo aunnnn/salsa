@@ -10,7 +10,14 @@ import UIKit
 
 // MARK: Overrides
 extension UIImageView {
-  @objc override open var sketchName: String { return "Image" }
+
+  private var imageName: String {
+    return accessibilityIdentifier ?? "Image"
+  }
+
+  @objc override open var sketchName: String {
+    return accessibilityIdentifier ?? "\(type(of: self))"
+  }
 
   /// Overrides contentLayers to provide a `Bitmap` representing the `self.image`
   @objc override func contentLayers() -> [Layer] {
@@ -30,7 +37,7 @@ extension UIImageView {
 
     if image.capInsets != .zero { // no way to do a 9-slice image in sketch so we're forced to just take a screenshot
       guard let fileName = screenshotImage?.saveToDisk() else { return nil }
-      return Bitmap(fileName: fileName, frame: CGRect(origin: .zero, size: frame.size))
+      return Bitmap(fileName: fileName, frame: CGRect(origin: .zero, size: frame.size), imageName: imageName)
     }
 
     let tintColor: Color? = {
@@ -41,7 +48,7 @@ extension UIImageView {
     }()
 
     guard let fileName = image.saveToDisk() else { return nil }
-    return Bitmap(fileName: fileName, frame: imageFrame(), tintColor: tintColor)
+    return Bitmap(fileName: fileName, frame: imageFrame(), tintColor: tintColor, imageName: imageName)
   }
 }
 
