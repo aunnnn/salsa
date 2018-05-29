@@ -18,7 +18,7 @@ extension Group {
 
     if !isRoot && candidate.shouldPurge() {
       // If we don't need self then get convert all sublayer frames and return just the sublayers
-      return candidate.layers.flatMap {
+      return candidate.layers.compactMap {
         let frame = CGRect(
           origin: CGPoint(
             x: self.frame.origin.x + $0.frame.origin.x,
