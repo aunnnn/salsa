@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30397C4B20BC255100EB2BE9 /* Salsa+AutoSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30397C4A20BC255100EB2BE9 /* Salsa+AutoSketch.swift */; };
 		D81EA2FF1FA25ED200A06CB2 /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EA2FE1FA25ED200A06CB2 /* UIFont+Utils.swift */; };
 		D83CE6DD203F88C000F24549 /* Document+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83CE6DC203F88C000F24549 /* Document+Export.swift */; };
 		D8471B941FE9E9030090A892 /* CALayer+SketchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8471B931FE9E9030090A892 /* CALayer+SketchFactory.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30397C4A20BC255100EB2BE9 /* Salsa+AutoSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Salsa+AutoSketch.swift"; sourceTree = "<group>"; };
 		D81EA2FE1FA25ED200A06CB2 /* UIFont+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
 		D82BEC1A1F4220C000638F8C /* ArtboardRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtboardRepresentable.swift; sourceTree = "<group>"; };
 		D83CE6DC203F88C000F24549 /* Document+Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+Export.swift"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				D87A0ACD1F71EBFC002DFA65 /* Factories */,
 				D85E374E1F7EC58C009EB5FC /* Salsa.h */,
 				D8C011E41F69EFCD001E14F7 /* Info.plist */,
+				30397C4A20BC255100EB2BE9 /* Salsa+AutoSketch.swift */,
 			);
 			path = Salsa;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				D85E373D1F7EC4B9009EB5FC /* Shape.swift in Sources */,
 				D85E37361F7EC497009EB5FC /* Layer.swift in Sources */,
 				D85E37391F7EC4AE009EB5FC /* Artboard.swift in Sources */,
+				30397C4B20BC255100EB2BE9 /* Salsa+AutoSketch.swift in Sources */,
 				D85E37371F7EC49B009EB5FC /* Document.swift in Sources */,
 				D8AD96861FAD2102009486A6 /* UIView+Utils.swift in Sources */,
 				D85E373E1F7EC4BB009EB5FC /* Symbol.swift in Sources */,
