@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30397C4B20BC255100EB2BE9 /* Salsa+AutoSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30397C4A20BC255100EB2BE9 /* Salsa+AutoSketch.swift */; };
+		3097EAAC20BFD98B008173D6 /* ArtboardSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3097EAAB20BFD98B008173D6 /* ArtboardSession.swift */; };
 		D81EA2FF1FA25ED200A06CB2 /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EA2FE1FA25ED200A06CB2 /* UIFont+Utils.swift */; };
 		D83CE6DD203F88C000F24549 /* Document+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83CE6DC203F88C000F24549 /* Document+Export.swift */; };
 		D8471B941FE9E9030090A892 /* CALayer+SketchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8471B931FE9E9030090A892 /* CALayer+SketchFactory.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		30397C4A20BC255100EB2BE9 /* Salsa+AutoSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Salsa+AutoSketch.swift"; sourceTree = "<group>"; };
+		3097EAAB20BFD98B008173D6 /* ArtboardSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardSession.swift; sourceTree = "<group>"; };
 		D81EA2FE1FA25ED200A06CB2 /* UIFont+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
 		D82BEC1A1F4220C000638F8C /* ArtboardRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtboardRepresentable.swift; sourceTree = "<group>"; };
 		D83CE6DC203F88C000F24549 /* Document+Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+Export.swift"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				D85E374E1F7EC58C009EB5FC /* Salsa.h */,
 				D8C011E41F69EFCD001E14F7 /* Info.plist */,
 				30397C4A20BC255100EB2BE9 /* Salsa+AutoSketch.swift */,
+				3097EAAB20BFD98B008173D6 /* ArtboardSession.swift */,
 			);
 			path = Salsa;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				D85E37331F7EC485009EB5FC /* ArtboardRepresentable.swift in Sources */,
 				D85E373F1F7EC4BE009EB5FC /* Text.swift in Sources */,
 				D85E37341F7EC48F009EB5FC /* JsonProtocols.swift in Sources */,
+				3097EAAC20BFD98B008173D6 /* ArtboardSession.swift in Sources */,
 				D85E37401F7EC4C1009EB5FC /* Group.swift in Sources */,
 				D85E37461F7EC4D8009EB5FC /* UIColor+SketchFactory.swift in Sources */,
 				D85E373B1F7EC4B3009EB5FC /* Color.swift in Sources */,
