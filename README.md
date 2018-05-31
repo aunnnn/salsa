@@ -78,7 +78,20 @@ class AutoSketchTest: XCTestCase {
 
 Great thing with the white-box UI automation is that you can get the keyWindow, get its active view controller, get its button/view/label, then set an accessibility identifier, then tap on that id directly! No need to go through your app's code and add accessbility identifier all over the places. Set and use it just-in-time.
 
+## Installation
+1. Clone the repo.
+2. Add `Salsa` to your Podfile that refers to this repo:
+```ruby
+pod 'Salsa', :path => '~/path/to/downloaded/salsa'
+```
+Or you can try using `:git => 'https://github.com/aunnnn/salsa-AutoSketch.git'`, I never used this way though.
+3. Build Salsa-Complier target. You will get the command-line program for that in the product folder. You will use this to generate Sketch file instead of the original one from `brew`. The original one generates simplified Sketch and trims many prviate views, this one generates full view hierarchy, for debugging purpose.
+4. Do automation test, e.g. with EarlGrey. Snap views as shown in the sample testcase. If you do the export right, you will get `generate.salsa` files at the `SalsaConfig.exportDirectory` (e.g., `/tmp/YourApp`).
+5. Use the salsa compiler you built (that command-line program) to convert generate.salsa (`/tmp/YourApp`) to a Sketch file. Make sure you have installed any custom fonts you use on the app, on your Mac again as well, else it will crash with font not found.
+
 ----
+# Salsa (Original README.md)
+
 ## What is Salsa?
 Salsa is an open source library that renders iOS views and exports them into a Sketch file. We built Salsa to help bridge the gap between design and engineering in an effort to create a single source of truth for visual styling of UI.
 
