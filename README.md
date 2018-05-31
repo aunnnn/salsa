@@ -1,3 +1,15 @@
+Salsa+AutoSketch
+
+[Salsa](https://github.com/Yelp/salsa) exports iOS views to a Sketch file, to help communication between design and engineering.
+
+AutoSketch is an experimental project, based on the hard work of Salsa, with the goal that such Sketch file could be a visual documentation of iOS apps. New developers in the team can browse the Sketch Artboard of various pages captured from the live app ("stuffed view hierarchy") and can easily figure out which views belong to which `UIView` subclass.
+
+To do this AutoSketch:
+1. Modify Salsa code to allow it to capture Groups/Artboard from instance of live views (*instead of making new views for capturing purpose in a static function*)
+2. Modify Salsa Compiller to not purging/filtering out any private views.
+3. Use `type(of: self)` as view's group name.
+
+----
 ## What is Salsa?
 Salsa is an open source library that renders iOS views and exports them into a Sketch file. We built Salsa to help bridge the gap between design and engineering in an effort to create a single source of truth for visual styling of UI.
 
