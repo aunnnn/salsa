@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Utilitiy class for making Artboard/Group from laid-out view instance.
 public struct AutoSketch {
 
     /// Make artboard with frame relative to its own space (e.g. origin always (0,0))
