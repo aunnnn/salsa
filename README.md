@@ -1,31 +1,37 @@
 # Salsa+AutoSketch
 
-## What's Salsa? What's AutoSketch?
+## What is Salsa?
 [Salsa](https://github.com/Yelp/salsa) exports iOS views to a Sketch file, to help communication between design and engineering.
 
-AutoSketch is an experimental project, built on top of the hard work of Salsa, with the goal that such Sketch file could be a visual documentation of iOS apps. New developers in the team can browse the Sketch Artboard of various pages captured from the live app ("stuffed view hierarchy") and can easily figure out which views belong to which `UIView` subclass.
+## What is AutoSketch?
+AutoSketch is an experimental project built on top of Salsa. It snaps full view hierarchies from a running app, and exports them to Sketch groups as UI automation navigates through the app. In the end we will have a Sketch file that mirrors various pages in the app, like a visual documentation. They can browse through the file to know which view belongs to which UIView subclass in the project.
 
+## How it's done
 To do this AutoSketch:
-1. Modify Salsa code to allow it to capture Groups/Artboard from instance of live views (*instead of making new views for capturing purpose in a static function*)
-2. Modify Salsa Compiller to not purging/filtering out any private views.
-3. Use `type(of: self)` as view's group name.
+1. Add wrappers around Salsa code for capturing Groups/Artboard from instance of views (originally we make new views specially for capturing purpose in a static function).
+2. Remove purging/filtering any private views out from Salsa Compiler.
+3. Use view class name as Sketch group name.
 Check out `Salsa+AutoSketch.swift`.
 
-AutoSketch also adds: 
+AutoSketch adds `artboardSession` utility function that wraps around Salsa to make it easy to generate Artboard in one go:
 ```swift
 public func artboardSession(name: String, sessionHandler: (ArtboardSession) -> Void) -> Artboard
 ```
-to make it easy to generate Artboard with `name`. You can use `ArtboardSession` to snap views:
+
+`ArtboardSession` can be used to snap views or windows:
+
 ```swift
 public func snapWindow(name: String) // name is group name, might use group name as view controller subclass, to make it easy to find
+```
+```swift
 public func snapView(_ view: UIView, name: String)
 ```
 All snapped views in a session will be shown horizontally in an artboard.
 
-## To use AutoSketch in practice
-You will combine it with your UI automation test framework of your choice. I used EarlGrey, and built some convenience functions [here.](https://github.com/aunnnn/EarlGrey-Convenience)
+## Example
+You will use it with UI automation test framework of your choice. I used EarlGrey, and wrote [some convenience functions here.](https://github.com/aunnnn/EarlGrey-Convenience)
 
-It's a unit testing that can do UI automation. That means we have full access of our app code which allows us to snap live views as we navigate through the app!
+Basically, it is unit testing that can do UI automation. That means we have full access of our app code which allows us to snap live views as we navigate through the app!
 
 Sample code:
 
@@ -49,15 +55,14 @@ class AutoSketchTest: XCTestCase {
   func testSnap() {
     makeSureKeyWindowVisible()
     
-    let allTabBarsFlow = artboardSession(name: "Home TabBars") { (s) in
-      s.snapWindow(name: "Menu")
-      tap(id: "Exclusives")
+    let allTabBarsFlow = artboardSession(name: "TabBars") { (s) in
+      tap(id: "Tab1")
       waitUntilLoadingFinish()
-      s.snapWindow(name: "Exclusives")
+      s.snapWindow(name: "Tab 1")
 
-      tap(id: "Tracker")
+      tap(id: "Tab2")
       waitUntilLoadingFinish()
-      s.snapWindow(name: "Tracker")
+      s.snapWindow(name: "Tab 2")
       
       ...
     }
@@ -76,7 +81,7 @@ class AutoSketchTest: XCTestCase {
 }
 ```
 
-Great thing with the white-box UI automation is that you can get the keyWindow, get its active view controller, get its button/view/label, then set an accessibility identifier, then tap on that id directly! No need to go through your app's code and add accessbility identifier all over the places. Set and use it just-in-time.
+Great thing with the white-box UI automation is that you can get the keyWindow, its active view controller, its button/view/label instances, then set accessibility identifiers on them and tap on those identifiers directly. No need to go through your app's code and add accessbility identifier all over the places. Set and use it just-in-time.
 
 ## Installation
 1. Clone the repo.
