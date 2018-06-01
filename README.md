@@ -12,8 +12,9 @@ AutoSketch is an experimental project built on top of Salsa. It snaps full view 
 To do this AutoSketch:
 1. Add wrappers around Salsa code for capturing Groups/Artboard from instance of views (originally we make new views specially for capturing purpose in a static function).
 2. Remove purging/filtering any private views out from Salsa Compiler.
-3. Use view class name as Sketch group name.
-Check out `Salsa+AutoSketch.swift`.
+3. Use view class name as Sketch group name (`type(of: self)`).
+
+Check out [`Salsa+AutoSketch.swift`](https://github.com/aunnnn/salsa-AutoSketch/blob/master/Salsa/Salsa%2BAutoSketch.swift) for the additional wrapper.
 
 AutoSketch adds `artboardSession` utility function that wraps around Salsa to make it easy to generate Artboard in one go:
 ```swift
