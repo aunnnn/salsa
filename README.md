@@ -1,5 +1,7 @@
 # Salsa+AutoSketch
 
+[Medium article](https://blog.oozou.com/documenting-ios-apps-visually-e8736b431cf7)
+
 ## What is Salsa?
 [Salsa](https://github.com/Yelp/salsa) exports iOS views to a Sketch file, to help communication between design and engineering.
 
