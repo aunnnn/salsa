@@ -30,6 +30,7 @@ public func snapWindow(name: String) // name is group name, might use group name
 public func snapView(_ view: UIView, name: String)
 ```
 All snapped views in a session will be shown horizontally in an artboard.
+Checkout [`ArtboardSession.swift`](https://github.com/aunnnn/salsa-AutoSketch/blob/master/Salsa/ArtboardSession.swift)
 
 ## Example
 You will use it with UI automation test framework of your choice. I used EarlGrey, and wrote [some convenience functions here.](https://github.com/aunnnn/EarlGrey-Convenience)
