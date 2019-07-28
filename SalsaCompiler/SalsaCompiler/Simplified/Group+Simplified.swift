@@ -14,7 +14,7 @@ extension Group {
     let newLayers: [Layer] = layers.map { $0.simplified() }.flatMap { $0 }
 
     // Candidate for an updated version of self
-    let candidate = Group(frame: frame, layers: newLayers, alpha: alpha, name: name, shadow: shadow)
+    let candidate = Group(frame: frame, layers: newLayers, alpha: alpha, name: name, shadow: shadow).filteringMaskIfNeeded()
 
     if !isRoot && candidate.shouldPurge() {
       // If we don't need self then get convert all sublayer frames and return just the sublayers
@@ -36,7 +36,7 @@ extension Group {
 
   // A group can be purged if (it has no sublayers) or (it doesn't have custom alpha, it doesn't have a shadow and it doesn't have a mask)
   func shouldPurge() -> Bool {
-    return false
+    return (shadow == nil && !hasMask && alpha == 1) || layers.isEmpty
   }
 
   var hasMask: Bool {
