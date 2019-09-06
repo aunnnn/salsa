@@ -22,7 +22,7 @@ class IdentifierStore {
   static func configure(with document: Document) {
     // Pull out all the symbols from the all the pages
     let masterSymbols: [SymbolMaster] = document.pages.map {
-      $0.layers.flatMap { $0 as? SymbolMaster }
+      $0.layers.compactMap { $0 as? SymbolMaster }
     }.flatMap { $0 }
 
     // Build identifiers for all the symbols

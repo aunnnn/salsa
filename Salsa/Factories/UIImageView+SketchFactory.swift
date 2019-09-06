@@ -54,7 +54,7 @@ extension UIImageView {
 
 // MARK: Writing image to disk
 @objc public extension UIImage {
-  @objc public func saveToDisk() -> String? {
+  @objc func saveToDisk() -> String? {
     if !FileManager.default.fileExists(atPath: SalsaConfig.imageExportDirectory) {
       do {
         try FileManager.default.createDirectory(at: NSURL.fileURL(withPath: SalsaConfig.imageExportDirectory), withIntermediateDirectories: true, attributes: nil)

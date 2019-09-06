@@ -13,11 +13,18 @@ extension Group {
     // Recursively simplify child layers
     let newLayers: [Layer] = layers.map { $0.simplified() }.flatMap { $0 }
 
+    // Remove (useless) groups with only a mask as layer
+    if newLayers.count == 1 && (newLayers[0] as? Shape)?.isMask ?? false {
+      return []
+    }
+
     // Candidate for an updated version of self
-    let candidate = Group(frame: frame, layers: newLayers, alpha: alpha, name: name, shadow: shadow).filteringMaskIfNeeded()
+    let candidate = Group(frame: frame, layers: newLayers, alpha: alpha, name: name, shadow: shadow)
+//      .filteringMaskIfNeeded()
 
     if !isRoot && candidate.shouldPurge() {
       // If we don't need self then get convert all sublayer frames and return just the sublayers
+      // (Flatten into sublayers)
       return candidate.layers.compactMap {
         let frame = CGRect(
           origin: CGPoint(
@@ -36,16 +43,13 @@ extension Group {
 
   // A group can be purged if (it has no sublayers) or (it doesn't have custom alpha, it doesn't have a shadow and it doesn't have a mask)
   func shouldPurge() -> Bool {
-    return (shadow == nil && !hasMask && alpha == 1) || layers.isEmpty
+    return layers.isEmpty //(shadow == nil && !hasMask && alpha == 1) || layers.isEmpty
   }
 
   var hasMask: Bool {
-    return layers.reduce(false, {
-      if let shape = $1 as? Shape {
-        return $0 || shape.isMask
-      }
-      return $0
-    })
+    return layers.contains {
+      return ($0 as? Shape)?.isMask ?? false
+    }
   }
 
   // Returns a copy of self without a mask if the mask is redundant

@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIFont {
   /// Converts the name of the font as it appears in iOS to a name that Sketch can understand
-  public var sketchCompatibleName: String {
+  var sketchCompatibleName: String {
     var fontName = self.fontName
     // System fonts on iOS are prefixed with .SFUI but on macOS the prefix is SFPro
     // We update the name or else sketch won't understand the font name

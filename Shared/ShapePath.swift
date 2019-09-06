@@ -78,7 +78,9 @@ extension RectanglePath: ShapePath {
   var isClosed: Bool { return true }
 
   var cgPath: CGPath {
-    return CGPath(roundedRect: frame, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
+    let validCornerRadiusWidth = min(frame.width/2, cornerRadius)
+    let validCornerRadiusHeight = min(frame.height/2, cornerRadius)
+    return CGPath(roundedRect: frame, cornerWidth: validCornerRadiusWidth, cornerHeight: validCornerRadiusHeight, transform: nil)
   }
 
   var curvePoints: [CurvePoint] {
